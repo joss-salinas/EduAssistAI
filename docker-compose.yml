@@ -1,87 +1,84 @@
 version: '3.8'
 
 services:
-  # Servicio de la interfaz web (Next.js)
-  frontend:
-    build: ./frontend
-    ports:
-      - "3000:3000"
+  # Servicio de base de datos MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: eduassist-mysql
+    restart: always
     environment:
-      - NEXT_PUBLIC_API_URL=http://localhost:8000
-      - NEXT_PUBLIC_RASA_URL=http://localhost:5005
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    depends_on:
-      - backend
-      - rasa
-    restart: unless-stopped
-
-  # Servicio del backend (FastAPI)
-  backend:
-    build: ./backend
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - "8000:8000"
-    environment:
-      - DATABASE_URL=mysql://${DB_USERNAME}:${DB_PASSWORD}@db:3306/${DB_DATABASE}
-      - RASA_URL=http://rasa:5005
-      - RASA_ACTIONS_URL=http://rasa-actions:5055
-      - JWT_SECRET=${JWT_SECRET}
-      - STORAGE_PATH=${STORAGE_PATH}
+      - "${MYSQL_PORT}:3306"
     volumes:
-      - ./backend:/app
-      - ./data:/app/data
-    depends_on:
-      - db
-      - rasa
-    restart: unless-stopped
+      - mysql-data:/var/lib/mysql
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-  # Servicio de Rasa (Servidor principal)
+  # Servicio de Rasa
   rasa:
-    build: ./rasa
+    build:
+      context: ./rasa
+      dockerfile: Dockerfile
+    container_name: eduassist-rasa
+    restart: always
     ports:
-      - "5005:5005"
-    volumes:
-      - ./rasa:/app
-      - ./models:/app/models
-    command: run --enable-api --cors "*"
+      - "${RASA_PORT}:5005"
     depends_on:
-      - rasa-actions
-    restart: unless-stopped
+      mysql:
+        condition: service_healthy
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    volumes:
+      - ./rasa/models:/app/models
+    command: run --enable-api --cors "*"
 
   # Servicio de acciones de Rasa
   rasa-actions:
-    build: ./rasa
+    build:
+      context: ./rasa/actions
+      dockerfile: Dockerfile
+    container_name: eduassist-rasa-actions
+    restart: always
     ports:
-      - "5055:5055"
-    volumes:
-      - ./rasa:/app
-    command: run actions
-    restart: unless-stopped
-
-  # Servicio de base de datos (MySQL)
-  db:
-    image: mysql:8.0
-    ports:
-      - "3306:3306"
-    environment:
-      - MYSQL_DATABASE=${DB_DATABASE}
-      - MYSQL_USER=${DB_USERNAME}
-      - MYSQL_PASSWORD=${DB_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
-    restart: unless-stopped
-
-  # Servicio de administración de la base de datos (Adminer)
-  adminer:
-    image: adminer
-    ports:
-      - "8080:8080"
+      - "${RASA_ACTIONS_PORT}:5055"
     depends_on:
-      - db
-    restart: unless-stopped
+      mysql:
+        condition: service_healthy
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+
+  # Servicio de la aplicación web Next.js
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: eduassist-web
+    restart: always
+    ports:
+      - "${WEB_PORT}:3000"
+    depends_on:
+      - rasa
+      - rasa-actions
+    environment:
+      - NEXT_PUBLIC_RASA_API_URL=http://localhost:${RASA_PORT}
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
 
 volumes:
-  mysql_data:
+  mysql-data:

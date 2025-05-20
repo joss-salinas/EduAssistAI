@@ -1,19 +1,10 @@
-FROM rasa/rasa:3.6.2
-
-# Copiar archivos de configuración
-COPY config.yml config.yml
-COPY domain.yml domain.yml
-COPY endpoints.yml endpoints.yml
-COPY credentials.yml credentials.yml
-COPY data/ data/
+ FROM rasa/rasa-sdk:3.6.0
 
 # Copiar acciones personalizadas
-COPY actions/ actions/
-
-# Instalar dependencias adicionales
-USER root
+COPY . /app/actions
 
 # Instalar dependencias del sistema necesarias para mysqlclient
+USER root
 RUN apt-get update && apt-get install -y \
     pkg-config \
     default-libmysqlclient-dev \
@@ -21,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Instalar paquetes Python
+# Instalar dependencias de Python
 RUN pip install --no-cache-dir \
     mysqlclient \
     pymysql \
@@ -41,8 +32,5 @@ RUN python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords'); 
 # Cambiar al usuario no root
 USER 1001
 
-# Entrenar el modelo inicial
-RUN rasa train
-
 # Comando por defecto
-CMD ["run", "--enable-api", "--cors", "*"]
+CMD ["start", "--actions", "actions"]

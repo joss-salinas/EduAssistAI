@@ -1,0 +1,457 @@
+version: "3.1"
+
+nlu:
+- intent: saludo
+  examples: |
+    - hola
+    - buenos días
+    - buenas tardes
+    - buenas noches
+    - qué tal
+    - saludos
+    - hey
+    - cómo estás
+    - qué hay
+    - qué onda
+    - qué pasa
+    - hola, ¿cómo estás?
+    - hey, ¿qué tal?
+    - buen día
+    - saludos cordiales
+    - un gusto saludarte
+    - hola de nuevo
+    - me alegra verte
+
+- intent: despedida
+  examples: |
+    - adiós
+    - hasta luego
+    - nos vemos
+    - hasta pronto
+    - chao
+    - bye
+    - me voy
+    - tengo que irme
+    - hasta la próxima
+    - que tengas un buen día
+    - nos vemos después
+    - hasta mañana
+    - que te vaya bien
+    - cuídate
+    - adiós, gracias por tu ayuda
+    - me despido
+    - hasta la vista
+
+- intent: consultar_horario
+  examples: |
+    - ¿Cuál es el horario de [matemáticas](curso)?
+    - ¿A qué hora es la clase de [física](curso)?
+    - ¿Cuándo tenemos [historia](curso)?
+    - Horario de [programación](curso)
+    - ¿En qué horario se imparte [química](curso)?
+    - ¿Qué días hay clase de [literatura](curso)?
+    - Necesito saber el horario de [biología](curso)
+    - ¿Cuál es el horario de la [biblioteca](lugar)?
+    - ¿A qué hora abre la [cafetería](lugar)?
+    - ¿Cuándo cierra el [laboratorio](lugar)?
+    - ¿Podrías decirme a qué hora comienza [álgebra](curso)?
+    - ¿En qué días de la semana tenemos [inglés](curso)?
+    - Quiero conocer el horario completo de [economía](curso)
+    - ¿Cuál es la duración de la clase de [filosofía](curso)?
+    - ¿El curso de [estadística](curso) es por la mañana o por la tarde?
+    - ¿Hay clases de [arte](curso) los viernes?
+    - Necesito el horario actualizado de [psicología](curso)
+    - ¿Cuántas horas a la semana tiene el curso de [derecho](curso)?
+    - ¿El [gimnasio](lugar) está abierto los fines de semana?
+    - ¿Hasta qué hora puedo acceder al [centro de cómputo](lugar)?
+
+- intent: consultar_profesor
+  examples: |
+    - ¿Quién es el profesor de [matemáticas](curso)?
+    - ¿Quién imparte [física](curso)?
+    - ¿Cómo se llama el profesor de [historia](curso)?
+    - Profesor de [programación](curso)
+    - ¿Quién enseña [química](curso)?
+    - ¿Cómo puedo contactar al profesor [García](profesor)?
+    - Necesito hablar con la profesora [Martínez](profesor)
+    - ¿Cuál es el correo del profesor [Rodríguez](profesor)?
+    - ¿Dónde puedo encontrar al profesor [López](profesor)?
+    - ¿Quién está a cargo del curso de [biología](curso) este semestre?
+    - ¿La profesora [Sánchez](profesor) sigue dando clases de [literatura](curso)?
+    - ¿Cuál es el horario de atención del profesor [Fernández](profesor)?
+    - ¿El doctor [Ramírez](profesor) tiene oficina en el campus principal?
+    - Necesito la información de contacto de la maestra [Torres](profesor)
+    - ¿Quién reemplazó al profesor [Díaz](profesor) en el curso de [física](curso)?
+    - ¿La profesora [González](profesor) tiene horas de consulta esta semana?
+    - ¿Cuántos años lleva enseñando el profesor [Pérez](profesor)?
+    - ¿El profesor [Morales](profesor) es el coordinador del departamento?
+    - ¿Dónde puedo dejar un trabajo para el profesor [Castro](profesor)?
+    - ¿La doctora [Vargas](profesor) sigue siendo la tutora del programa?
+
+- intent: consultar_curso
+  examples: |
+    - ¿Dónde se imparte [matemáticas](curso)?
+    - ¿En qué aula es [física](curso)?
+    - ¿Dónde tenemos [historia](curso)?
+    - Ubicación de la clase de [programación](curso)
+    - ¿En qué salón es [química](curso)?
+    - ¿Qué temas se ven en [literatura](curso)?
+    - ¿Cuál es el temario de [biología](curso)?
+    - ¿Qué libros necesito para [filosofía](curso)?
+    - ¿Cuáles son los requisitos para inscribirse en [cálculo](curso)?
+    - ¿El curso de [estadística](curso) tiene laboratorio práctico?
+    - ¿Cuántos créditos vale la asignatura de [economía](curso)?
+    - ¿[álgebra lineal](curso) es un curso obligatorio u optativo?
+    - ¿Hay examen final en [química orgánica](curso)?
+    - ¿Qué software se utiliza en el curso de [diseño gráfico](curso)?
+    - ¿Cuál es la modalidad de evaluación en [psicología](curso)?
+    - ¿El curso de [derecho penal](curso) incluye visitas a tribunales?
+    - ¿Hay cupo disponible en [anatomía](curso) para este semestre?
+    - ¿Qué profesor tiene las mejores evaluaciones para [física cuántica](curso)?
+    - ¿El curso de [literatura contemporánea](curso) requiere lecturas previas?
+    - ¿Cuándo comienza el curso intensivo de [programación web](curso)?
+
+- intent: consultar_evento
+  examples: |
+    - ¿Cuándo es la [graduación](evento)?
+    - ¿A qué hora comienza la [conferencia](evento)?
+    - ¿Dónde será el [festival](evento)?
+    - Información sobre la [feria de ciencias](evento)
+    - ¿Cuándo es el [examen final](evento)?
+    - ¿Dónde será la [ceremonia](evento)?
+    - ¿A qué hora es la [reunión de padres](evento)?
+    - Detalles del [torneo deportivo](evento)
+    - ¿Cuándo se realizará la [semana cultural](evento) este año?
+    - ¿Dónde puedo inscribirme para el [concurso de oratoria](evento)?
+    - ¿Quién será el orador principal en la [conferencia magistral](evento)?
+    - ¿Cuál es el programa del [simposio internacional](evento)?
+    - ¿Se ha pospuesto la [presentación de proyectos](evento)?
+    - ¿Necesito boleto para asistir al [concierto benéfico](evento)?
+    - ¿Cuánto dura la [exposición de arte](evento)?
+    - ¿Habrá transmisión en línea del [congreso académico](evento)?
+    - ¿Quiénes pueden participar en el [hackathon](evento)?
+    - ¿Cuál es la fecha límite para registrarse en el [taller de escritura](evento)?
+    - ¿Se entregará certificado por asistir al [seminario de investigación](evento)?
+    - ¿El [debate estudiantil](evento) será en español o en inglés?
+
+- intent: consultar_reglamento
+  examples: |
+    - ¿Cuál es el reglamento de la institución?
+    - Necesito consultar las normas
+    - ¿Dónde puedo ver el reglamento?
+    - ¿Cuáles son las reglas de la escuela?
+    - Reglamento estudiantil
+    - Normas de conducta
+    - ¿Qué dice el reglamento sobre las faltas?
+    - ¿Cuál es la política de asistencia?
+    - ¿Cuántas inasistencias están permitidas antes de reprobar?
+    - ¿Cuál es el procedimiento para solicitar una revisión de examen?
+    - ¿Qué sanciones hay por plagio académico?
+    - ¿Está permitido usar dispositivos electrónicos en clase?
+    - ¿Cuál es el código de vestimenta de la institución?
+    - ¿Cómo puedo apelar una calificación?
+    - ¿Qué dice el reglamento sobre la entrega tardía de trabajos?
+    - ¿Cuáles son los requisitos para graduarse con honores?
+    - ¿Hay alguna normativa sobre el uso de las instalaciones deportivas?
+    - ¿Cuál es el proceso disciplinario para faltas graves?
+    - ¿Qué establece el reglamento sobre cambios de carrera?
+    - ¿Existen excepciones a la política de asistencia por motivos médicos?
+
+- intent: agradecer
+  examples: |
+    - gracias
+    - muchas gracias
+    - te lo agradezco
+    - muy amable
+    - gracias por la información
+    - gracias por tu ayuda
+    - excelente, gracias
+    - te agradezco mucho
+    - eres de gran ayuda, gracias
+    - no sé qué haría sin ti, gracias
+    - gracias por tu tiempo
+    - gracias por explicarme
+    - gracias, eso era justo lo que necesitaba
+    - agradezco tu paciencia
+    - gracias por ser tan claro
+    - muchas gracias por todo
+    - gracias, has sido muy útil
+    - te lo agradezco enormemente
+    - gracias por tu asistencia
+    - gracias, ahora entiendo mejor
+
+- intent: preguntar_como_estas
+  examples: |
+    - ¿cómo estás?
+    - ¿qué tal?
+    - ¿cómo te encuentras?
+    - ¿cómo va todo?
+    - ¿cómo te sientes?
+    - ¿todo bien?
+    - ¿qué hay de nuevo?
+    - ¿cómo ha sido tu día?
+    - ¿qué tal te va?
+    - ¿cómo te trata la vida?
+    - ¿qué me cuentas?
+    - ¿cómo van las cosas?
+    - ¿qué tal tu día?
+    - ¿cómo has estado?
+    - ¿todo marcha bien?
+    - ¿qué tal te está yendo?
+    - ¿cómo te va hoy?
+    - ¿estás bien?
+    - ¿qué tal todo?
+    - ¿cómo te está tratando el día?
+
+- intent: expresar_gratitud
+  examples: |
+    - estoy muy agradecido
+    - aprecio mucho tu ayuda
+    - valoro lo que haces
+    - no sé cómo agradecerte
+    - te debo una
+    - me has salvado
+    - no tengo palabras para agradecerte
+    - eres un salvavidas
+    - no sé qué habría hecho sin ti
+    - te estoy eternamente agradecido
+    - me has hecho un gran favor
+    - te lo agradezco de corazón
+    - mi más sincero agradecimiento
+    - gracias por estar ahí
+    - aprecio tu dedicación
+    - gracias por tu esfuerzo
+    - te agradezco infinitamente
+    - has sido de gran ayuda
+    - gracias por tu compromiso
+    - valoro enormemente tu apoyo
+
+- intent: expresar_opinion_positiva
+  examples: |
+    - me gusta cómo funciona esto
+    - eres muy útil
+    - esto es genial
+    - me encanta esta función
+    - eres muy inteligente
+    - trabajas muy bien
+    - estoy impresionado
+    - eres mejor de lo que esperaba
+    - esto es exactamente lo que necesitaba
+    - qué buen servicio
+    - eres muy eficiente
+    - me sorprende lo bien que funciona
+    - esto es fantástico
+    - me gusta hablar contigo
+    - eres muy amable
+    - das respuestas muy claras
+    - me gusta tu forma de explicar
+    - eres muy paciente
+    - esto es muy conveniente
+    - me alegra haberte encontrado
+
+- intent: expresar_opinion_negativa
+  examples: |
+    - esto no funciona bien
+    - no me gusta cómo lo haces
+    - eres muy lento
+    - no entiendes lo que digo
+    - esto es frustrante
+    - no eres útil
+    - esperaba algo mejor
+    - esto no es lo que pedí
+    - no estoy satisfecho
+    - podrías mejorar
+    - no me convence
+    - esto es complicado de usar
+    - no me das lo que necesito
+    - tus respuestas son confusas
+    - esto es decepcionante
+    - no resuelves mi problema
+    - esto no tiene sentido
+    - no me estás ayudando
+    - esto es demasiado básico
+    - necesito algo más avanzado
+
+- intent: solicitar_ayuda
+  examples: |
+    - necesito ayuda
+    - ¿puedes ayudarme?
+    - estoy perdido
+    - no sé qué hacer
+    - ¿cómo puedo resolver esto?
+    - necesito asistencia
+    - ¿me puedes echar una mano?
+    - estoy atascado
+    - no entiendo cómo proceder
+    - ¿podrías darme una pista?
+    - ¿qué debo hacer ahora?
+    - ¿cómo funciona esto?
+    - necesito orientación
+    - ¿me puedes guiar?
+    - no encuentro lo que busco
+    - ¿hay alguna forma de...?
+    - ¿puedes mostrarme cómo?
+    - necesito instrucciones
+    - ¿tienes algún consejo?
+    - ¿existe alguna solución para esto?
+
+- intent: afirmar
+  examples: |
+    - sí
+    - claro
+    - por supuesto
+    - definitivamente
+    - exacto
+    - correcto
+    - así es
+    - efectivamente
+    - afirmativo
+    - totalmente
+    - sin duda
+    - estoy de acuerdo
+    - tienes razón
+    - es verdad
+    - cierto
+    - eso es
+    - desde luego
+    - absolutamente
+    - confirmo
+    - en efecto
+
+- intent: negar
+  examples: |
+    - no
+    - para nada
+    - en absoluto
+    - negativo
+    - de ninguna manera
+    - nunca
+    - jamás
+    - no estoy de acuerdo
+    - te equivocas
+    - incorrecto
+    - falso
+    - no es así
+    - no es cierto
+    - no es verdad
+    - no es correcto
+    - estás equivocado
+    - no lo creo
+    - imposible
+    - ni hablar
+    - de ningún modo
+
+- intent: informar
+  examples: |
+    - mi nombre es [Juan](nombre)
+    - me llamo [María](nombre)
+    - soy [Pedro](nombre)
+    - puedes llamarme [Ana](nombre)
+    - soy estudiante de [ingeniería](curso)
+    - estudio [medicina](curso)
+    - estoy en el curso de [matemáticas](curso)
+    - mi profesor es [García](profesor)
+    - tengo clase con [Martínez](profesor)
+    - mi correo es ejemplo@dominio.com
+    - mi número de estudiante es 12345
+    - estoy en el tercer semestre
+    - voy en segundo año
+    - pertenezco a la facultad de [ciencias](tema)
+    - estoy en el grupo A
+    - mi horario es de mañana
+    - tengo clases los lunes y miércoles
+    - vivo cerca del campus
+    - trabajo y estudio
+    - soy de tiempo completo
+
+- intent: preguntar_general
+  examples: |
+    - ¿qué es un [crédito académico](tema)?
+    - ¿cómo funciona el sistema de evaluación?
+    - ¿qué significa [promedio ponderado](tema)?
+    - ¿cuándo son las vacaciones?
+    - ¿dónde está la [biblioteca](lugar)?
+    - ¿cómo puedo inscribirme en un curso?
+    - ¿qué es un [prerrequisito](tema)?
+    - ¿cómo solicito una beca?
+    - ¿qué carreras ofrecen?
+    - ¿cuánto dura la carrera de [ingeniería](curso)?
+    - ¿qué servicios ofrece la universidad?
+    - ¿cómo funciona el intercambio estudiantil?
+    - ¿qué es un [examen de suficiencia](tema)?
+    - ¿cómo puedo obtener mi certificado?
+    - ¿qué actividades extracurriculares hay?
+    - ¿cómo funciona la biblioteca virtual?
+    - ¿qué es un [trabajo de grado](tema)?
+    - ¿cómo puedo cambiar de carrera?
+    - ¿qué opciones de titulación existen?
+    - ¿cómo se calcula el promedio final?
+
+- intent: preguntar_personal
+  examples: |
+    - ¿quién te creó?
+    - ¿cómo funcionas?
+    - ¿eres una IA?
+    - ¿qué puedes hacer?
+    - ¿cuáles son tus limitaciones?
+    - ¿entiendes todo lo que digo?
+    - ¿puedes aprender?
+    - ¿tienes sentimientos?
+    - ¿cuánto tiempo llevas funcionando?
+    - ¿dónde está tu servidor?
+    - ¿quién te programó?
+    - ¿cómo te entrenaron?
+    - ¿puedes recordar nuestras conversaciones anteriores?
+    - ¿tienes acceso a internet?
+    - ¿qué información tienes sobre mí?
+    - ¿puedes ver imágenes?
+    - ¿hablas otros idiomas?
+    - ¿tienes un nombre?
+    - ¿cuál es tu propósito?
+    - ¿cómo te actualizan?
+
+- intent: bromear
+  examples: |
+    - cuéntame un chiste
+    - dime algo gracioso
+    - hazme reír
+    - ¿conoces algún chiste?
+    - di algo divertido
+    - necesito reírme un poco
+    - ¿tienes sentido del humor?
+    - sorpréndeme con algo gracioso
+    - ¿sabes contar chistes?
+    - quiero escuchar un chiste
+    - dime un chiste sobre estudiantes
+    - ¿tienes algún chiste sobre profesores?
+    - cuéntame un chiste sobre la universidad
+    - algo divertido sobre estudiar
+    - hazme un chiste sobre exámenes
+    - necesito un chiste para alegrar el día
+    - dime algo gracioso sobre la vida académica
+    - un chiste rápido, por favor
+    - ¿puedes ser gracioso?
+    - sorpréndeme con tu humor
+
+- intent: fallback
+  examples: |
+    - xyz
+    - asdfghjkl
+    - 123456789
+    - no entiendo nada
+    - esto no tiene sentido
+    - blablabla
+    - qwertyuiop
+    - !@#$%^&*()
+    - abcdefg
+    - 987654321
+    - hola mundo
+    - prueba prueba
+    - test test
+    - ejemplo ejemplo
+    - palabra palabra
+    - texto aleatorio
+    - sin sentido
+    - palabras al azar
+    - texto de prueba
+    - solo probando

@@ -1,0 +1,110 @@
+version: "3.1"
+
+stories:
+- story: Saludo y consulta de horarios
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: consulta_horarios
+  - action: utter_consulta_horarios
+  - intent: agradecimiento
+  - action: utter_agradecimiento
+  - intent: despedida
+  - action: utter_despedida
+
+- story: Saludo y consulta de ubicación
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: consulta_ubicacion
+  - action: utter_consulta_ubicacion
+  - intent: agradecimiento
+  - action: utter_agradecimiento
+  - intent: despedida
+  - action: utter_despedida
+
+- story: Saludo y consulta de contacto
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: consulta_contacto
+  - action: utter_consulta_contacto
+  - intent: agradecimiento
+  - action: utter_agradecimiento
+  - intent: despedida
+  - action: utter_despedida
+
+- story: Saludo y consulta de cursos
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: consulta_cursos
+  - action: utter_consulta_cursos
+  - intent: agradecimiento
+  - action: utter_agradecimiento
+  - intent: despedida
+  - action: utter_despedida
+
+- story: Saludo y consulta de profesores
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: consulta_profesores
+  - action: utter_consulta_profesores
+  - intent: agradecimiento
+  - action: utter_agradecimiento
+  - intent: despedida
+  - action: utter_despedida
+
+- story: Saludo y consulta de eventos
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: consulta_eventos
+  - action: utter_consulta_eventos
+  - intent: agradecimiento
+  - action: utter_agradecimiento
+  - intent: despedida
+  - action: utter_despedida
+
+- story: Saludo y consulta de trámites
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: consulta_tramites
+  - action: utter_consulta_tramites
+  - intent: agradecimiento
+  - action: utter_agradecimiento
+  - intent: despedida
+  - action: utter_despedida
+
+- story: Consulta general y ayuda
+  steps:
+  - intent: consulta_general
+  - action: utter_consulta_general
+  - intent: ayuda
+  - action: utter_ayuda
+  - intent: agradecimiento
+  - action: utter_agradecimiento
+
+- story: Consulta fuera de alcance
+  steps:
+  - intent: fuera_de_alcance
+  - action: utter_fuera_de_alcance
+  - intent: consulta_general
+  - action: utter_consulta_general
+
+- story: Múltiples consultas
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: consulta_horarios
+  - action: utter_consulta_horarios
+  - intent: consulta_ubicacion
+  - action: utter_consulta_ubicacion
+  - intent: consulta_contacto
+  - action: utter_consulta_contacto
+  - intent: agradecimiento
+  - action: utter_agradecimiento
+  - intent: despedida
+  - action: utter_despedida

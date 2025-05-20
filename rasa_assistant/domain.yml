@@ -1,0 +1,212 @@
+version: "3.1"
+
+intents:
+  - saludo
+  - despedida
+  - consultar_horario
+  - consultar_profesor
+  - consultar_curso
+  - consultar_evento
+  - consultar_reglamento
+  - agradecer
+  - preguntar_como_estas
+  - expresar_gratitud
+  - expresar_opinion_positiva
+  - expresar_opinion_negativa
+  - solicitar_ayuda
+  - fallback
+  - afirmar
+  - negar
+  - informar
+  - preguntar_general
+  - preguntar_personal
+  - bromear
+  - expresar_emocion_positiva
+  - expresar_emocion_negativa
+  - expresar_confusion
+  - expresar_sorpresa
+  - expresar_frustracion
+  - expresar_satisfaccion
+  - expresar_preocupacion
+  - expresar_alivio
+  - expresar_interes
+  - expresar_aburrimiento
+  - expresar_esperanza
+  - expresar_duda
+  - expresar_certeza
+  - expresar_preferencia
+  - expresar_desacuerdo
+  - expresar_acuerdo
+
+entities:
+  - curso
+  - profesor
+  - horario
+  - evento
+  - fecha
+  - lugar
+  - nombre
+  - tema
+  - emocion
+  - intensidad
+  - opinion
+  - preferencia
+  - problema
+  - solucion
+
+slots:
+  curso:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: curso
+  profesor:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: profesor
+  horario:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: horario
+  evento:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: evento
+  fecha:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: fecha
+  lugar:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: lugar
+  user_name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: nombre
+  conversation_topic:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: custom
+  last_emotion:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: emocion
+  emotion_intensity:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: intensidad
+  user_preference:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: preferencia
+  conversation_history:
+    type: list
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+responses:
+  utter_saludo:
+    - text: "¡Hola! Soy el asistente virtual de la institución educativa. ¿En qué puedo ayudarte hoy?"
+    - text: "Bienvenido/a. Soy tu asistente virtual. ¿Cómo puedo asistirte?"
+    - text: "¡Hola! Estoy aquí para ayudarte con información académica. ¿Qué necesitas saber?"
+  
+  utter_despedida:
+    - text: "¡Hasta pronto! Si tienes más preguntas, no dudes en volver."
+    - text: "Adiós. Estoy aquí para ayudarte cuando lo necesites."
+    - text: "Ha sido un placer ayudarte. ¡Que tengas un excelente día!"
+  
+  utter_consultar_horario:
+    - text: "El horario de {curso} es de {horario}."
+    - text: "Las clases de {curso} se imparten en el horario: {horario}."
+    - text: "Para la asignatura de {curso}, el horario establecido es {horario}."
+  
+  utter_consultar_profesor:
+    - text: "El profesor {profesor} imparte el curso de {curso}."
+    - text: "El curso {curso} es impartido por el profesor {profesor}."
+    - text: "El docente a cargo de {curso} es {profesor}."
+  
+  utter_consultar_curso:
+    - text: "El curso {curso} se imparte en {lugar} con el profesor {profesor}."
+    - text: "La asignatura {curso} tiene lugar en {lugar} y es impartida por {profesor}."
+  
+  utter_consultar_evento:
+    - text: "El evento {evento} está programado para el {fecha} en {lugar}."
+    - text: "Respecto a {evento}, se realizará el {fecha} en {lugar}."
+  
+  utter_consultar_reglamento:
+    - text: "Puedes consultar el reglamento completo en la página web de la institución o en la secretaría académica."
+    - text: "El reglamento institucional está disponible en formato digital en el portal estudiantil y en formato físico en la secretaría."
+  
+  utter_agradecer:
+    - text: "¡De nada! Estoy aquí para ayudarte."
+    - text: "Es un placer poder asistirte."
+    - text: "No hay de qué. Me alegra haber sido útil."
+  
+  utter_fallback:
+    - text: "Lo siento, no he entendido tu consulta. ¿Podrías reformularla?"
+    - text: "No estoy seguro de entender lo que necesitas. ¿Podrías ser más específico?"
+    - text: "Disculpa, pero no logro comprender tu pregunta. ¿Podrías expresarla de otra manera?"
+
+  utter_preguntar_como_estas:
+    - text: "Estoy muy bien, gracias por preguntar. ¿En qué puedo ayudarte hoy?"
+    - text: "Funcionando perfectamente y listo para asistirte. ¿Tú cómo estás?"
+  
+  utter_bromear:
+    - text: "¿Sabías que los programadores son las únicas personas que pueden resolver un problema que no sabían que tenían de una manera que no entienden?"
+    - text: "¿Por qué los estudiantes son buenos detectives? Porque siempre están investigando."
+    - text: "La educación es importante, pero los recreos son importantísimos."
+
+  utter_ask_continue:
+    - text: "¿Hay algo más en lo que pueda ayudarte?"
+    - text: "¿Necesitas información adicional sobre algún otro tema?"
+    - text: "¿Puedo asistirte con alguna otra consulta?"
+  
+  utter_express_empathy:
+    - text: "Entiendo cómo te sientes. Es completamente normal tener esas emociones."
+    - text: "Comprendo que esta situación puede ser {emotion_intensity}. Estoy aquí para ayudarte."
+    - text: "Es válido sentirse así. Todos experimentamos emociones similares en ciertas circunstancias."
+
+  utter_acknowledge_emotion_change:
+    - text: "Noto un cambio en tu estado de ánimo. Estoy aquí para adaptarme a cómo te sientes."
+    - text: "Parece que tu emoción ha cambiado. Eso es completamente normal y estoy aquí para seguir ayudándote."
+    - text: "Percibo un cambio en tu tono. Las emociones son dinámicas y es natural que cambien durante una conversación."
+
+  utter_handle_sarcasm:
+    - text: "Detecto un tono irónico. A veces el texto escrito puede llevar a malentendidos. ¿Podrías reformular tu pregunta?"
+    - text: "Parece que hay un toque de sarcasmo ahí. Para poder ayudarte mejor, ¿podrías expresar tu consulta de otra manera?"
+    - text: "El sarcasmo puede ser difícil de interpretar en texto. Para asegurarme de entenderte correctamente, ¿podrías ser más directo?"
+
+actions:
+  - action_greet_with_time_awareness
+  - action_handle_small_talk
+  - action_search_knowledge_base
+  - action_advanced_emotion_detection
+  - action_maintain_conversation_context
+  - action_generate_contextual_response
+  - action_handle_complex_queries
+
+session_config:
+  session_expiration_time: 60  # minutos
+  carry_over_slots_to_new_session: true

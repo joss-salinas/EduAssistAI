@@ -1,0 +1,88 @@
+version: "3.1"
+
+rules:
+- rule: Saludar al usuario
+  steps:
+  - intent: saludo
+  - action: action_greet_with_time_awareness
+  - action: action_listen
+
+- rule: Despedirse del usuario
+  steps:
+  - intent: despedida
+  - action: utter_despedida
+  - action: action_listen
+
+- rule: Agradecer al usuario
+  steps:
+  - intent: agradecer
+  - action: utter_agradecer
+  - action: action_listen
+
+- rule: Responder a consulta de reglamento
+  steps:
+  - intent: consultar_reglamento
+  - action: utter_consultar_reglamento
+  - action: action_listen
+
+- rule: Manejar small talk
+  steps:
+  - intent: preguntar_como_estas
+  - action: action_handle_small_talk
+  - action: action_listen
+
+- rule: Manejar expresión de gratitud
+  steps:
+  - intent: expresar_gratitud
+  - action: action_handle_small_talk
+  - action: action_listen
+
+- rule: Manejar opinión positiva
+  steps:
+  - intent: expresar_opinion_positiva
+  - action: action_handle_small_talk
+  - action: action_listen
+
+- rule: Manejar opinión negativa
+  steps:
+  - intent: expresar_opinion_negativa
+  - action: action_handle_small_talk
+  - action: action_listen
+
+- rule: Responder a bromas
+  steps:
+  - intent: bromear
+  - action: utter_bromear
+  - action: action_listen
+
+- rule: Detectar emociones después de cada mensaje del usuario
+  steps:
+  - action: action_advanced_emotion_detection
+  - action: action_listen
+
+- rule: Mantener contexto después de cada respuesta del sistema
+  steps:
+  - action: action_maintain_conversation_context
+  - action: action_listen
+
+- rule: Generar respuesta contextual cuando sea relevante
+  steps:
+  - action: action_generate_contextual_response
+  - action: action_listen
+
+- rule: Buscar en base de conocimiento
+  steps:
+  - intent: preguntar_general
+  - action: action_search_knowledge_base
+  - action: action_listen
+
+- rule: Manejar consultas complejas
+  steps:
+  - action: action_handle_complex_queries
+  - action: action_listen
+
+- rule: Fallback
+  steps:
+  - intent: nlu_fallback
+  - action: utter_fallback
+  - action: action_listen

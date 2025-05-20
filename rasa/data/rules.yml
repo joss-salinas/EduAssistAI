@@ -1,0 +1,82 @@
+version: "3.1"
+
+rules:
+- rule: Saludar siempre
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+
+- rule: Despedirse siempre
+  steps:
+  - intent: despedida
+  - action: utter_despedida
+
+- rule: Agradecer siempre
+  steps:
+  - intent: agradecimiento
+  - action: utter_agradecimiento
+
+- rule: Afirmar siempre
+  steps:
+  - intent: afirmacion
+  - action: utter_afirmacion
+
+- rule: Negar siempre
+  steps:
+  - intent: negacion
+  - action: utter_negacion
+
+- rule: Consulta de horarios
+  steps:
+  - intent: consulta_horarios
+  - action: utter_consulta_horarios
+
+- rule: Consulta de ubicación
+  steps:
+  - intent: consulta_ubicacion
+  - action: utter_consulta_ubicacion
+
+- rule: Consulta de contacto
+  steps:
+  - intent: consulta_contacto
+  - action: utter_consulta_contacto
+
+- rule: Consulta de cursos
+  steps:
+  - intent: consulta_cursos
+  - action: utter_consulta_cursos
+
+- rule: Consulta de profesores
+  steps:
+  - intent: consulta_profesores
+  - action: utter_consulta_profesores
+
+- rule: Consulta de eventos
+  steps:
+  - intent: consulta_eventos
+  - action: utter_consulta_eventos
+
+- rule: Consulta de trámites
+  steps:
+  - intent: consulta_tramites
+  - action: utter_consulta_tramites
+
+- rule: Consulta general
+  steps:
+  - intent: consulta_general
+  - action: utter_consulta_general
+
+- rule: Ayuda
+  steps:
+  - intent: ayuda
+  - action: utter_ayuda
+
+- rule: Fuera de alcance
+  steps:
+  - intent: fuera_de_alcance
+  - action: utter_fuera_de_alcance
+
+- rule: Respuesta por defecto
+  steps:
+  - intent: nlu_fallback
+  - action: utter_default

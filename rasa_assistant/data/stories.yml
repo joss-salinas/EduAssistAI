@@ -1,0 +1,92 @@
+version: "3.1"
+
+stories:
+- story: consulta de horario
+  steps:
+  - intent: saludo
+  - action: action_greet_with_time_awareness
+  - intent: consultar_horario
+    entities:
+    - curso: "matemáticas"
+  - slot_was_set:
+    - curso: "matemáticas"
+  - action: utter_consultar_horario
+  - intent: agradecer
+  - action: utter_agradecer
+  - intent: despedida
+  - action: utter_despedida
+
+- story: consulta de profesor
+  steps:
+  - intent: saludo
+  - action: action_greet_with_time_awareness
+  - intent: consultar_profesor
+    entities:
+    - curso: "física"
+  - slot_was_set:
+    - curso: "física"
+  - action: utter_consultar_profesor
+  - intent: agradecer
+  - action: utter_agradecer
+
+- story: consulta de curso
+  steps:
+  - intent: consultar_curso
+    entities:
+    - curso: "historia"
+  - slot_was_set:
+    - curso: "historia"
+  - action: utter_consultar_curso
+  # Eliminamos la acción específica aquí para evitar conflictos
+
+- story: consulta de evento
+  steps:
+  - intent: consultar_evento
+    entities:
+    - evento: "graduación"
+  - slot_was_set:
+    - evento: "graduación"
+  - action: utter_consultar_evento
+
+- story: conversación con small talk
+  steps:
+  - intent: saludo
+  - action: action_greet_with_time_awareness
+  - intent: preguntar_como_estas
+  - action: action_handle_small_talk
+  - intent: expresar_opinion_positiva
+  - action: action_handle_small_talk
+  - intent: consultar_horario
+    entities:
+    - curso: "programación"
+  - slot_was_set:
+    - curso: "programación"
+  - action: utter_consultar_horario
+  - intent: expresar_gratitud
+  - action: action_handle_small_talk
+  - intent: despedida
+  - action: utter_despedida
+
+- story: conversación con búsqueda de conocimiento
+  steps:
+  - intent: saludo
+  - action: action_greet_with_time_awareness
+  - intent: preguntar_general
+  - action: action_search_knowledge_base
+  - intent: solicitar_ayuda
+  - action: action_search_knowledge_base
+  - intent: agradecer
+  - action: utter_agradecer
+  - intent: despedida
+  - action: utter_despedida
+
+- story: conversación con bromas
+  steps:
+  - intent: saludo
+  - action: action_greet_with_time_awareness
+  - intent: bromear
+  - action: utter_bromear
+  - intent: expresar_opinion_positiva
+  - action: action_handle_small_talk
+  - intent: despedida
+  - action: utter_despedida

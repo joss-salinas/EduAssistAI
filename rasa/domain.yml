@@ -1,0 +1,135 @@
+version: "3.1"
+
+intents:
+  - saludo
+  - despedida
+  - agradecimiento
+  - afirmacion
+  - negacion
+  - consulta_horarios
+  - consulta_ubicacion
+  - consulta_contacto
+  - consulta_cursos
+  - consulta_profesores
+  - consulta_eventos
+  - consulta_tramites
+  - consulta_general
+  - ayuda
+  - fuera_de_alcance
+
+entities:
+  - curso
+  - profesor
+  - ubicacion
+  - evento
+  - tramite
+  - fecha
+
+slots:
+  curso:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: curso
+  profesor:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: profesor
+  ubicacion:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: ubicacion
+  evento:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: evento
+  tramite:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: tramite
+  fecha:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: fecha
+
+responses:
+  utter_saludo:
+    - text: "¡Hola! Soy EduAssistAI, tu asistente virtual. ¿En qué puedo ayudarte hoy?"
+    - text: "¡Bienvenido/a! Soy EduAssistAI, estoy aquí para responder tus preguntas. ¿Cómo puedo ayudarte?"
+    - text: "Hola, soy EduAssistAI. Estoy aquí para asistirte. ¿Qué necesitas saber?"
+
+  utter_despedida:
+    - text: "¡Hasta luego! Si tienes más preguntas, no dudes en volver."
+    - text: "¡Adiós! Espero haber sido de ayuda. Estoy aquí cuando me necesites."
+    - text: "Hasta pronto. ¡Que tengas un buen día!"
+
+  utter_agradecimiento:
+    - text: "¡De nada! Estoy aquí para ayudarte."
+    - text: "Es un placer poder asistirte."
+    - text: "No hay de qué. ¿Hay algo más en lo que pueda ayudarte?"
+
+  utter_afirmacion:
+    - text: "¡Perfecto! ¿En qué más puedo ayudarte?"
+    - text: "Excelente. ¿Necesitas algo más?"
+    - text: "Muy bien. Estoy aquí para lo que necesites."
+
+  utter_negacion:
+    - text: "Entiendo. Si cambias de opinión, estoy aquí para ayudarte."
+    - text: "De acuerdo. No dudes en preguntar si necesitas algo más."
+    - text: "Está bien. Estoy disponible cuando me necesites."
+
+  utter_consulta_horarios:
+    - text: "Los horarios de atención generales son de lunes a viernes de 8:00 a 18:00. Para horarios específicos de cada departamento, te recomiendo consultar la página web oficial o preguntar por un departamento en particular."
+
+  utter_consulta_ubicacion:
+    - text: "Para información sobre ubicaciones, por favor especifica qué lugar estás buscando (edificio, aula, oficina, etc.)."
+    - text: "Si estás buscando {ubicacion}, puedo ayudarte a encontrarla. Por favor, proporciona más detalles."
+
+  utter_consulta_contacto:
+    - text: "Para contactar con la institución, puedes llamar al número principal o enviar un correo electrónico. ¿Necesitas información de contacto de algún departamento específico?"
+
+  utter_consulta_cursos:
+    - text: "Tenemos una amplia oferta de cursos. ¿Estás interesado/a en alguna área en particular?"
+    - text: "Si estás interesado/a en el curso de {curso}, puedo proporcionarte más información al respecto."
+
+  utter_consulta_profesores:
+    - text: "Para información sobre profesores, por favor especifica el nombre del profesor o el departamento."
+    - text: "Si estás buscando información sobre el profesor {profesor}, puedo ayudarte."
+
+  utter_consulta_eventos:
+    - text: "Regularmente organizamos diversos eventos académicos y culturales. ¿Estás interesado/a en algún tipo de evento en particular?"
+    - text: "Si estás interesado/a en el evento {evento}, puedo proporcionarte más detalles."
+
+  utter_consulta_tramites:
+    - text: "Para realizar trámites, generalmente necesitas dirigirte a la oficina correspondiente. ¿Qué tipo de trámite necesitas realizar?"
+    - text: "Si necesitas realizar el trámite de {tramite}, puedo indicarte los pasos a seguir."
+
+  utter_consulta_general:
+    - text: "Para responder a tu pregunta, necesito más información. ¿Podrías ser más específico/a?"
+    - text: "Estoy aquí para ayudarte, pero necesito más detalles para poder responder adecuadamente a tu consulta."
+
+  utter_ayuda:
+    - text: "Puedo ayudarte con información sobre horarios, ubicaciones, contactos, cursos, profesores, eventos y trámites. ¿Qué te gustaría saber?"
+
+  utter_fuera_de_alcance:
+    - text: "Lo siento, esa pregunta está fuera de mi conocimiento actual. Te recomiendo contactar directamente con la institución para obtener esa información."
+    - text: "Disculpa, no tengo información sobre eso en este momento. ¿Hay algo más en lo que pueda ayudarte?"
+
+  utter_default:
+    - text: "Lo siento, no he entendido tu pregunta. ¿Podrías reformularla?"
+    - text: "Disculpa, no estoy seguro de entender lo que necesitas. ¿Podrías expresarlo de otra manera?"
+
+session_config:
+  session_expiration_time: 60  # en minutos
+  carry_over_slots_to_new_session: true

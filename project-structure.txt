@@ -1,0 +1,34 @@
+EduAssistAI/
+├── .env.example                # Plantilla para variables de entorno
+├── docker-compose.yml          # Configuración de Docker Compose
+├── LICENSE                     # Licencia MIT
+├── README.md                   # Documentación principal
+├── scripts/                    # Scripts de automatización
+│   ├── setup.sh                # Script de configuración inicial
+│   ├── start.sh                # Script para iniciar el sistema
+│   └── train.sh                # Script para entrenar el modelo
+├── frontend/                   # Interfaz web (Next.js)
+│   ├── Dockerfile              # Configuración para construir el contenedor
+│   ├── package.json            # Dependencias y scripts
+│   ├── public/                 # Archivos estáticos
+│   └── src/                    # Código fuente
+├── backend/                    # API (FastAPI)
+│   ├── Dockerfile              # Configuración para construir el contenedor
+│   ├── requirements.txt        # Dependencias de Python
+│   ├── app/                    # Código fuente
+│   └── tests/                  # Pruebas unitarias
+├── rasa/                       # Asistente de IA (Rasa)
+│   ├── Dockerfile              # Configuración para construir el contenedor
+│   ├── config.yml              # Configuración de Rasa
+│   ├── domain.yml              # Dominio de Rasa
+│   ├── endpoints.yml           # Endpoints de Rasa
+│   ├── credentials.yml         # Credenciales de Rasa
+│   ├── actions/                # Acciones personalizadas
+│   └── data/                   # Datos de entrenamiento
+└── docs/                       # Documentación detallada
+    ├── installation.md         # Guía de instalación
+    ├── usage.md                # Guía de uso
+    ├── training.md             # Guía de entrenamiento
+    ├── security.md             # Guía de seguridad
+    ├── api.md                  # Documentación de la API
+    └── faq.md                  # Preguntas frecuentes

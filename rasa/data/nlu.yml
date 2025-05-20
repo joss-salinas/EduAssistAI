@@ -1,0 +1,212 @@
+version: "3.1"
+
+nlu:
+- intent: saludo
+  examples: |
+    - hola
+    - buenos días
+    - buenas tardes
+    - buenas noches
+    - qué tal
+    - saludos
+    - hey
+    - cómo estás
+    - hola, ¿cómo estás?
+    - hola, ¿qué tal?
+    - hola, buenos días
+    - hola, buenas tardes
+    - hola, buenas noches
+
+- intent: despedida
+  examples: |
+    - adiós
+    - hasta luego
+    - hasta pronto
+    - nos vemos
+    - chao
+    - bye
+    - que tengas un buen día
+    - hasta mañana
+    - me voy
+    - tengo que irme
+    - hasta la próxima
+
+- intent: agradecimiento
+  examples: |
+    - gracias
+    - muchas gracias
+    - te lo agradezco
+    - muy amable
+    - gracias por tu ayuda
+    - gracias por la información
+    - te agradezco mucho
+    - mil gracias
+    - gracias por todo
+
+- intent: afirmacion
+  examples: |
+    - sí
+    - claro
+    - por supuesto
+    - definitivamente
+    - correcto
+    - exacto
+    - así es
+    - efectivamente
+    - estoy de acuerdo
+    - me parece bien
+    - ok
+    - vale
+
+- intent: negacion
+  examples: |
+    - no
+    - para nada
+    - en absoluto
+    - nunca
+    - jamás
+    - no estoy de acuerdo
+    - no me parece
+    - no es correcto
+    - no es así
+    - no quiero
+    - no me interesa
+
+- intent: consulta_horarios
+  examples: |
+    - ¿cuál es el horario?
+    - ¿a qué hora abren?
+    - ¿a qué hora cierran?
+    - ¿cuáles son los horarios de atención?
+    - ¿en qué horario puedo ir?
+    - ¿están abiertos los fines de semana?
+    - ¿cuál es el horario de la biblioteca?
+    - ¿a qué hora comienzan las clases?
+    - ¿hasta qué hora están abiertos?
+    - horarios
+    - necesito saber los horarios
+    - ¿me puedes decir los horarios?
+
+- intent: consulta_ubicacion
+  examples: |
+    - ¿dónde está ubicado?
+    - ¿cómo llego a?
+    - ¿dónde queda?
+    - ¿cuál es la dirección?
+    - ¿dónde se encuentra?
+    - ¿cómo puedo llegar?
+    - ¿dónde está la biblioteca?
+    - ¿dónde está el aula?
+    - ¿dónde está la oficina?
+    - ¿dónde está el edificio?
+    - ubicación
+    - dirección
+    - ¿me puedes dar la ubicación?
+
+- intent: consulta_contacto
+  examples: |
+    - ¿cómo puedo contactarlos?
+    - ¿cuál es el número de teléfono?
+    - ¿cuál es el correo electrónico?
+    - ¿tienen redes sociales?
+    - ¿cómo me comunico con?
+    - ¿cómo contacto a?
+    - ¿cuál es el contacto de?
+    - contacto
+    - información de contacto
+    - ¿me puedes dar el contacto?
+    - ¿cómo puedo comunicarme?
+
+- intent: consulta_cursos
+  examples: |
+    - ¿qué cursos ofrecen?
+    - ¿cuáles son los cursos disponibles?
+    - ¿tienen cursos de?
+    - ¿hay algún curso sobre?
+    - ¿cuándo comienza el curso de?
+    - ¿cuánto dura el curso de?
+    - ¿cuál es el precio del curso?
+    - cursos
+    - información sobre cursos
+    - ¿me puedes informar sobre los cursos?
+    - ¿qué carreras tienen?
+    - ¿qué programas académicos ofrecen?
+
+- intent: consulta_profesores
+  examples: |
+    - ¿quiénes son los profesores?
+    - ¿quién imparte el curso de?
+    - ¿quién es el profesor de?
+    - ¿cómo contacto al profesor?
+    - ¿cuál es el horario de atención del profesor?
+    - profesores
+    - información sobre profesores
+    - ¿me puedes dar información sobre los profesores?
+    - ¿quién enseña?
+    - ¿quién da la clase de?
+
+- intent: consulta_eventos
+  examples: |
+    - ¿qué eventos hay?
+    - ¿cuándo es el próximo evento?
+    - ¿hay algún evento sobre?
+    - ¿dónde será el evento?
+    - ¿a qué hora comienza el evento?
+    - eventos
+    - información sobre eventos
+    - ¿me puedes informar sobre los eventos?
+    - ¿qué actividades tienen programadas?
+    - ¿hay alguna conferencia próximamente?
+
+- intent: consulta_tramites
+  examples: |
+    - ¿cómo hago para?
+    - ¿qué necesito para?
+    - ¿cuál es el proceso para?
+    - ¿dónde puedo hacer el trámite de?
+    - ¿cuánto tiempo tarda el trámite de?
+    - trámites
+    - información sobre trámites
+    - ¿me puedes informar sobre los trámites?
+    - ¿cómo realizo?
+    - ¿qué documentos necesito para?
+
+- intent: consulta_general
+  examples: |
+    - ¿me puedes dar información sobre?
+    - ¿qué sabes sobre?
+    - ¿me puedes hablar de?
+    - ¿tienes información acerca de?
+    - ¿me puedes explicar?
+    - información
+    - quiero saber sobre
+    - necesito información
+    - ¿me puedes ayudar con?
+    - tengo una duda sobre
+
+- intent: ayuda
+  examples: |
+    - ayuda
+    - necesito ayuda
+    - ¿puedes ayudarme?
+    - ¿cómo funciona esto?
+    - ¿qué puedes hacer?
+    - ¿para qué sirves?
+    - ¿en qué me puedes ayudar?
+    - ¿cuáles son tus funciones?
+    - ¿qué tipo de preguntas puedo hacerte?
+    - no sé qué preguntar
+    - estoy perdido
+
+- intent: fuera_de_alcance
+  examples: |
+    - ¿cuál es el sentido de la vida?
+    - ¿crees en dios?
+    - ¿qué opinas de la política?
+    - ¿puedes hackear una cuenta?
+    - ¿cómo puedo copiar en un examen?
+    - ¿me puedes hacer la tarea?
+    - ¿puedes escribir un ensayo por mí?
+    - ¿cómo puedo engañar al sistema?
+    - ¿me das las respuestas del examen?
+    - ¿puedes darme la contraseña de alguien?
